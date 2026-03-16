@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="93" height="32" viewBox="0 0 93 32">
+<defs>
+  <!-- Glow filter -->
+  <filter id="glow_unity" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+    <feColorMatrix in="blur" type="matrix"
+      values="2.5 0 0 0 0.667  0 2.5 0 0 0.667  0 0 2.5 0 0.667  0 0 0 1 0"
+      result="glow"/>
+    <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- Scan line gradient -->
+  <linearGradient id="scan_unity" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0)" />
+    <stop offset="48%"  stop-color="rgba(255,255,255,0)" />
+    <stop offset="50%"  stop-color="rgba(255,255,255,0.25)" />
+    <stop offset="52%"  stop-color="rgba(255,255,255,0)" />
+    <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+    <animateTransform attributeName="gradientTransform" type="translate"
+      from="0 -1" to="0 2" dur="3.2s" repeatCount="indefinite" begin="900ms"/>
+  </linearGradient>
+
+  <!-- Border glow gradient -->
+  <linearGradient id="borderGrad_unity" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="rgba(255,255,255,0.9)"/>
+    <stop offset="50%"  stop-color="rgba(255,255,255,0.3)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0.9)"/>
+    <animate attributeName="x1" values="0%;100%;0%" dur="2.0s" repeatCount="indefinite" begin="900ms"/>
+    <animate attributeName="x2" values="100%;0%;100%" dur="2.0s" repeatCount="indefinite" begin="900ms"/>
+  </linearGradient>
+
+  <clipPath id="clip_unity">
+    <rect width="93" height="32" rx="4"/>
+  </clipPath>
+</defs>
+
+<!-- Background -->
+<rect width="93" height="32" rx="4"
+  fill="rgba(13,13,13,0.97)"/>
+
+<!-- Grid texture -->
+<rect width="93" height="32" rx="4" fill="none"
+  style="background-image: repeating-linear-gradient(rgba(255,255,255,0.03) 0px, transparent 1px, transparent 3px, rgba(255,255,255,0.03) 4px)"/>
+
+<!-- Pulse background glow -->
+<rect width="93" height="32" rx="4"
+  fill="rgba(255,255,255,0.06)">
+  <animate attributeName="fill-opacity" values="0.04;0.13;0.04"
+    dur="2.4s" repeatCount="indefinite" begin="900ms"/>
+</rect>
+
+<!-- Scan line effect -->
+<rect width="93" height="32" rx="4" fill="url(#scan_unity)" clip-path="url(#clip_unity)"/>
+
+<!-- Border -->
+<rect x="0.6" y="0.6" width="91.8" height="30.8" rx="3.5"
+  fill="none" stroke="url(#borderGrad_unity)" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values="0.7;1;0.7"
+    dur="2.4s" repeatCount="indefinite" begin="900ms"/>
+</rect>
+
+<!-- Inner border subtle -->
+<rect x="2" y="2" width="89" height="28" rx="2.5"
+  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+
+<!-- Icon -->
+<text x="14" y="17"
+  text-anchor="middle" dominant-baseline="middle"
+  font-family="Segoe UI Emoji, Apple Color Emoji, sans-serif"
+  font-size="13" fill="rgba(204,204,204,0.95)">
+  ◈
+</text>
+
+<!-- Separator line -->
+<line x1="22" y1="6"
+      x2="22" y2="26"
+  stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>
+
+<!-- Label text -->
+<text x="55.5" y="16"
+  text-anchor="middle" dominant-baseline="middle"
+  font-family="Space Mono, Courier New, monospace"
+  font-size="10.5" font-weight="600" letter-spacing="0.8"
+  fill="rgba(204,204,204,1)" filter="url(#glow_unity)">
+  Unity
+</text>
+
+<!-- Corner accent dots -->
+<circle cx="3.5" cy="3.5" r="1.2" fill="rgba(255,255,255,0.7)">
+  <animate attributeName="opacity" values="0.5;1;0.5"
+    dur="2.4s" repeatCount="indefinite" begin="900ms"/>
+</circle>
+<circle cx="89.5" cy="28.5" r="1.2" fill="rgba(255,255,255,0.7)">
+  <animate attributeName="opacity" values="1;0.5;1"
+    dur="2.4s" repeatCount="indefinite" begin="900ms"/>
+</circle>
+
+</svg>
